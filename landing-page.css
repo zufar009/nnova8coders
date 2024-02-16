@@ -1,0 +1,44 @@
+/* Existing CSS styles remain the same */
+
+/* Additional styles for the new elements */
+nav {
+    background-color: #66a6ff;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main {
+    background-color: #f0f2f5;
+    padding: 40px 20px;
+}
+
+.feature-section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.feature-section h2 {
+    color: #333;
+}
+
+.feature-section img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
