@@ -1,0 +1,105 @@
+.css-18to3ni {
+    -webkit-font-smoothing: antialiased;
+    font-family: "Headspace Apercu", sans-serif;
+    text-rendering: optimizelegibility;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.375em;
+    display: block;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+header {
+    background-color: #3291cd;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .header-content {
+    text-align: center;
+  }
+  
+  .button {
+    background-color: #dfe8df;
+    color: rgb(53, 90, 225);
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 0px;
+    cursor: pointer;
+  }
+ 
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+  }
+ 
+ 
+  
+ 
+  header {
+    background-color: rgb(55, 198, 234);
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .login-signup {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-signup a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .login-signup a:hover {
+    text-decoration: underline;
+  }
+  
+  .header-content, .logo, nav a, .login-signup a {
+    color: white;
+  }
+  
+  .login-signup {
+    justify-content: flex-end;
+  }
