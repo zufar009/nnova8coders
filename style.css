@@ -9,13 +9,14 @@ body {
   
     border-radius:15px;
   
-    width: 500px;
+    width: 450px;
+  
     text-align: center;
     margin: 0 auto;
     background-color: #f5f5f5;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #cccccc;
+    border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
 
 #chatbot {
@@ -23,6 +24,7 @@ body {
     border: 1px solid #eef1f5;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+    
   }
   
   #header {
@@ -31,6 +33,7 @@ body {
     padding: 20px;
     font-size: 1em;
     font-weight: bold;
+    border-radius:15px;
   }
 
   message-container {
@@ -159,3 +162,37 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+  /*------------------------------------------------*/
+  #quiz {
+    width: 300px;
+    
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  #question {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  #options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #options li {
+    margin-bottom: 5px;
+  }
+  
+  #options button {
+    width: 100%;
+    padding: 10px;
+    background-color: #e98686;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
