@@ -1,42 +1,82 @@
-'use strict';
-class ChatAI {
 
-    constructor(options) {
-        let defaults = {
-            api_key: '',
-            source: 'openai',
-            model: 'gpt-3.5-turbo',
-            conversations: [],
-            selected_conversation: null,
-            container: '.chat-ai',
-            chat_speed: 30,
-            title: 'Untitled',
-            max_tokens: 100,
-            version: '1.0.0',
-            show_tokens: true,
-            available_models: ['gpt-4', 'gpt-4-0613', 'gpt-4-32k', 'gpt-4-32k-0613', 'gpt-3.5-turbo', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-16k-0613']
-        };
-        this.options = Object.assign(defaults, options);
-        this.options.container = document.querySelector(this.options.container);
-        this.options.container.innerHTML = `
-            ${this._sidebarTemplate()}
-            <main class="content">               
-                ${this._welcomePageTemplate()}
-                <form class="message-form">
-                    <input type="text" placeholder="Type a message..." required>
-                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
-                </form>
-            </main>
-        `;
-        let settings = this.getSettings();
-        if (settings) {
-            this.options = Object.assign(this.options, settings);
-        }
-        this._eventHandlers();
-        this.container.querySelector('.message-form input').focus();
+const quiz = {
+  questions: [
+    {
+      question: "In the past one month, how often have you felt overwhelmingly sad?",
+      options: ["Not at all","At times","More than half the days","Nearly every day"],
+      answer: 0
+    },
+    {
+      question:"Have you had any thoughts of suicide or have you felt hopeless about the future?",
+      options: ["Never","Strongly disagree","Strongly agree"],
+      answer: 0
+    },
+    {
+      question: "How is your sleep?",
+      options: ["Sleeping as usual","Slight difficulty", "A lot of difficulties"],
+      answer: 0
+    },
+    {
+      question: "Do you prefer to stay at home rather than going out and doing new things?",
+      options: ["Yes","No"],
+      answer: 0
+    },
+    {
+      question: "Have you been feeling tired or having little energy?",
+      options: ["Sleeping as usual","Slight difficulty", "A lot of difficulties"],
+      answer: 0
+    },
+    {
+      question: "How is your sleep?",
+      options: ["Not at all","Almost every day","I feel hopeless and I don't feel like working at all"],
+      answer: 0
     }
+  ],
+  currentQuestion: 0,
+  score: 0
+};
+
+function displayQuestion() {
+  const questionElem = document.getElementById("question");
+  const optionsElem = document.getElementById("options");
+
+  questionElem.textContent = quiz.questions[quiz.currentQuestion].question;
+
+  optionsElem.innerHTML = "";
+  quiz.questions[quiz.currentQuestion].options.forEach((option, index) => {
+    const liElem = document.createElement("li");
+    const buttonElem = document.createElement("button");
+    buttonElem.textContent = option;
+    buttonElem.id = `option${index}`;
+    buttonElem.addEventListener("click", handleOptionClick);
+    liElem.appendChild(buttonElem);
+    optionsElem.appendChild(liElem);
+  });
+}
+
+function handleOptionClick(event) {
+  const selectedOption = parseInt(event.target.id.slice(-1));
+
+  if (selectedOption === quiz.questions[quiz.currentQuestion].answer) {
+    quiz.score++;
   }
 
+  quiz.currentQuestion++;
+
+  if (quiz.currentQuestion < quiz.questions.length) {
+    displayQuestion();
+  } else {
+    displayScore();
+  }
+}
+
+function displayScore() {
+  const scoreElem = document.createElement("h1");
+  scoreElem.textContent = `You might want to consult a doctor, the most probable illnesses might be: Depression or PTSD or Anxiety or ADHD`;
+  document.getElementById("quiz").appendChild(scoreElem);
+}
+
+displayQuestion();
 
 
 
@@ -46,9 +86,7 @@ class ChatAI {
 
 
 
-
-
-//_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*__*_*_*_*_*_*_*_*_//
+//_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_
 // Get chatbot elements
 const chatbot = document.getElementById('chatbot');
 const conversation = document.getElementById('conversation');
@@ -88,8 +126,18 @@ inputForm.addEventListener('submit', function(event) {
 function generateResponse(input) {
     // Add chatbot logic here
     const responses = [
-      "Hello, how can I help you today? 😊",
+     // "Hello, how can I help you today? 😊",
       "I'm sorry, I didn't understand your question. Could you please rephrase it? 😕",
+      " I'm sorry to hear that. Depression can be really tough to deal with. Have you been experiencing any specific symptoms?",
+      " I'm sorry to hear that. Depression can be really tough to deal with. Have you been experiencing any specific symptoms?",
+      " I'm sorry to hear that. Depression can be really tough to deal with. Have you been experiencing any specific symptoms?",
+      " I'm sorry to hear that. Depression can be really tough to deal with. Have you been experiencing any specific symptoms?",
+      "Of course. Remember, you're not alone in this. If you ever need someone to talk to, I'm here for you. Take care of yourself.",
+      "Of course. Remember, you're not alone in this. If you ever need someone to talk to, I'm here for you. Take care of yourself.",
+      "It's actually quite simple. You can start by finding a quiet and comfortable place to sit or lie down. Close your ",
+      "It's normal for thoughts to come and go during meditation. The goal isn't to stop your thoughts completely, but rather to observe them without judgment and let them pass. If you find yourself getting caught up in worry, gently redirect your attention back to your breath or the guided instructions.",
+      " Absolutely! We actually have a web app that offers guided meditation sessions specifically designed to reduce anxiety. It provides step-by-step instructions and soothing audio to help you relax. Would you like me to share the link with you?",
+      "Sure thing. Here's the link to our web app: [Link]. I hope you find it helpful. Remember, it's important to take care of yourself, especially during stressful times like these.",
       "I'm here to assist you with any questions or concerns you may have. 📩",
       "I'm sorry, I'm not able to browse the internet or access external information. Is there anything else I can help with? 💻",
       "What would you like to know? 🤔",
